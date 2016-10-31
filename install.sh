@@ -11,7 +11,7 @@ sudo rm -rf /etc/default/udhcpd
 sudo mkdir /etc/default
 sudo touch /etc/default/udhcpd
 echo "start 192.168.42.2 " >>   $x
-echo "end 192.168.42.20" >> $x
+echo "end 192.168.42.100" >> $x
 echo "interface wlan0" >> $x
 echo "remaining yes" >> $x
 echo "opt dns 8.8.8.8 4.2.2.2" >> $x
@@ -89,14 +89,17 @@ echo "interface=wlan0" >> $x
 echo "driver=nl80211" >> $x
 echo "ssid=My_AP" >> $x
 echo "hw_mode=g" >> $x
-echo "channel=6" >> $x
+echo "channel=8" >> $x
+echo "ieee80211n=1" >> $x
+echo "wmm_enabled=1" >> $x
+echo "ht_capab=[HT40][SHORT-GI-20][DSSS_CCK-40]" >> $x
 echo "macaddr_acl=0" >> $x
 echo "auth_algs=1" >> $x
 echo "ignore_broadcast_ssid=0" >> $x
-echo  "wpa=2" >> $x
+echo "wpa=2" >> $x
 echo "wpa_passphrase=pnptutorials" >> $x
 echo "wpa_key_mgmt=WPA-PSK" >> $x
-echo "wpa_pairwise=TKIP" >> $x
+echo "#wpa_pairwise=TKIP" >> $x
 echo "rsn_pairwise=CCMP" >> $x
 sudo mv  $x  /etc/hostapd/hostapd.conf
 #4. Configure NAT--------------------------------------------
